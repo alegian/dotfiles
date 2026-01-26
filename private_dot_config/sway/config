@@ -1,14 +1,4 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
 set $mod Mod4
-# Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
@@ -25,6 +15,7 @@ set $rofi_cmd rofi \
 # executables from PATH.
 # TODO: add window with the next release of rofi-wayland
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
+set $clipboard_menu cliphist list | $rofi_cmd -dmenu -display-columns 2 | cliphist decode | wl-copy
 
 ### Output configuration
 #
@@ -51,6 +42,8 @@ output * bg /usr/share/backgrounds/default.jxl fill
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
+exec wl-paste --watch cliphist store
+
 ### Input configuration
 input "type:touchpad" {
     tap disabled
@@ -65,17 +58,11 @@ input "type:pointer" {
 }
 
 ### Key bindings
-#
-# Basics:
-#
-    # Start a terminal
     bindsym $mod+Return exec $term
-
-    # Kill focused window
     bindsym $mod+Shift+q kill
-
-    # Start your launcher
     bindsym $mod+d exec $menu
+    bindsym $mod+c exec $clipboard_menu
+    bindsym $mod+Shift+c reload
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -83,9 +70,6 @@ input "type:pointer" {
     # Change normal to inverse to use left mouse button for resizing and right
     # mouse button for dragging.
     floating_modifier $mod normal
-
-    # Reload the configuration file
-    bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
