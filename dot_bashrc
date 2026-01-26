@@ -23,3 +23,6 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 unset rc
+
+gsettings set org.blueman.general disabled-plugins "['GameControllerWakelock']"
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
