@@ -186,6 +186,10 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+gaps inner 8
+default_border none
+corner_radius 8
+
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d
 #  - /etc/sway/config.d
