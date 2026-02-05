@@ -25,3 +25,12 @@ fi
 unset rc
 
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
+alias nvimc='cd ~/.config/nvim && nvim .'
+
+alias mono='cd /home/alegian/projects/givelink/mono'
+alias thavma='cd /home/alegian/projects/alegian/thavma'
+alias ublue='cd /home/alegian/projects/alegian/ublue'
+
+alias day='sudo ddcutil setvcp 10 100'
+alias night='sudo ddcutil setvcp 10 50'
