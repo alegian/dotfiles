@@ -1,0 +1,12 @@
+#!/bin/sh
+
+KEY_PATH="$HOME/.config/age/chezmoi-key.txt"
+
+if [ ! -f "$KEY_PATH" ]; then
+    echo HAHAH
+    mkdir -p "$(dirname "$KEY_PATH")"
+    
+    pass-cli item get "pass://Personal/Chezmoi/note" > "$KEY_PATH"
+    
+    chmod 600 "$KEY_PATH"
+fi
