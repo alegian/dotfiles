@@ -6,4 +6,7 @@ fi
 
 if [ ! -s "$HOME/.nvm/nvm.sh" ]; then
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | PROFILE=/dev/null bash
+  source ~/.bashrc
+  nvm install --lts
+  nvm use --lts
 fi
