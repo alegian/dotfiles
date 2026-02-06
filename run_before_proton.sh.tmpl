@@ -10,3 +10,5 @@ if [ ! -f "$KEY_PATH" ]; then
     
     chmod 600 "$KEY_PATH"
 fi
+
+xargs flatpak install -y < ~/.config/flatpaks.txt
