@@ -5,5 +5,5 @@ if [ ! -x "$HOME/.bun/bin/bun" ]; then
 fi
 
 if [ ! -s "$HOME/.nvm/nvm.sh" ]; then
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | PROFILE=/dev/null bash
 fi
