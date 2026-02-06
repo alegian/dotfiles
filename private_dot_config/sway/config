@@ -20,9 +20,9 @@ set $clipboard_menu cliphist list | $rofi_cmd -dmenu -display-columns 2 | cliphi
 output * bg #B19CD9 solid_color
 
 exec swayidle -w \
-         timeout 600 'swaylock -f -c 000000' \
+         timeout 600 'gtklock' \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -c 000000'
+         before-sleep 'gtklock'
 
 exec wl-paste --watch cliphist store
 
@@ -50,9 +50,6 @@ input "type:keyboard" {
     bindsym $mod+d exec $menu
     bindsym $mod+c exec $clipboard_menu
     bindsym $mod+Shift+c reload
-
-    bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy && notify-send "Screenshot" "Screenshot copied to clipboard"
-    bindsym $mod+Shift+p exec grim -g "$(slurp -p -b 00000000)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy && notify-send "Color Picker" "Color copied to clipboard"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

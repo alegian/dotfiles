@@ -1,0 +1,22 @@
+window {
+  background-color: #B19CD9;
+  color: black;
+}
+
+entry {
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 18px;
+}
+
+#input-field {
+  margin-left: -5px;
+}
+
+#input-label {
+  font-size: 0px;
+}
+
+#unlock-button {
+  opacity: 0;
+}
