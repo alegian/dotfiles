@@ -51,6 +51,9 @@ input "type:keyboard" {
     bindsym $mod+c exec $clipboard_menu
     bindsym $mod+Shift+c reload
 
+    bindsym control+mod1+delete exec wlogout
+    bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy && notify-send "Screenshot" "Screenshot copied to clipboard"
+    bindsym $mod+Shift+p exec grim -g "$(slurp -p -b 00000000)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy && notify-send "Color Picker" "Color copied to clipboard"
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
