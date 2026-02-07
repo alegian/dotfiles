@@ -1,5 +1,9 @@
 #!/bin/sh
 
+DBEAVER_PATH="/var/home/alegian/.local/share/DBeaverData/workspace6/General/.dbeaver/data-sources.json"
+mkdir -p "$(dirname "$DBEAVER_PATH")"
+cp ~/.config/dbeaver/data-sources.json $DBEAVER_PATH
+
 if [ ! -x "$HOME/.bun/bin/bun" ]; then
   curl -fsSL https://bun.sh/install | bash
 fi
