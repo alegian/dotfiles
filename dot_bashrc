@@ -40,3 +40,5 @@ alias ublue='cd /home/alegian/projects/alegian/ublue'
 
 alias day='sudo ddcutil setvcp 10 100'
 alias night='sudo ddcutil setvcp 10 50'
+
+alias save-flatpaks='flatpak list --app --columns=application > ~/.config/flatpaks.txt'
