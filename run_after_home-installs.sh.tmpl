@@ -16,6 +16,10 @@ if [ ! -s "$HOME/.nvm/nvm.sh" ]; then
   source ~/.bashrc
 fi
 
+if [ ! -x "$HOME/.ghcup/bin/ghcup" ]; then
+  curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+fi
+
 npm install --global yarn
 
 yarn global add opencode-ai
