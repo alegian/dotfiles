@@ -8,7 +8,8 @@ window {
 }
 
 button {
-  margin: 128px 16px;
+  margin: 64px 16px;
+  padding: 0px;
   border-radius: 16px;
 	text-decoration-color: #B19CD9;
   color: #B19CD9;
@@ -16,7 +17,8 @@ button {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 25%;
-  font-size: 32px;
+  font-size: 24px;
+  min-width: 128px;
 }
 
 button:focus, button:active, button:hover {
@@ -28,11 +30,9 @@ button:focus, button:active, button:hover {
 }
 
 #shutdown {
-  margin-left: 192px;
   background-image: image(url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
 }
 
 #reboot {
-  margin-right: 192px;
   background-image: image(url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
 }
