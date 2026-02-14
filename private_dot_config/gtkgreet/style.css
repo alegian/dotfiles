@@ -1,0 +1,23 @@
+window {
+  background-color: #B19CD9;
+  color: black;
+}
+
+#input-field {
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 18px;
+  margin-left: -5px;
+}
+
+#command-selector {
+  opacity: 0;
+}
+
+label {
+  font-size: 0px;
+}
+
+button {
+  opacity: 0;
+}
