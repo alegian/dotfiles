@@ -2,7 +2,23 @@
 padding = { x = 8, y = 8 }
 
 [font]
-size = 20.0
+size = 16.0
+
+[font.normal]
+family = "RobotoMono Nerd Font Mono"
+style = "Regular"
+
+[font.bold]
+family = "RobotoMono Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "RobotoMono Nerd Font Mono"
+style = "Italic"
+
+[font.bold_italic]
+family = "RobotoMono Nerd Font Mono"
+style = "Bold Italic"
 
 [colors.primary]
 background = '#0a0c10'
