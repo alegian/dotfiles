@@ -17,11 +17,16 @@ set $rofi_cmd rofi \
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 set $clipboard_menu cliphist list | $rofi_cmd -dmenu -display-columns 2 | cliphist decode | wl-copy
 
+set $laptop eDP-1
+set $external LG Electronics
+
+# disable laptop screen if external screen connected
+exec_always "swaymsg -t get_outputs | grep -q '$external' && swaymsg output $laptop disable || swaymsg output $laptop enable"
+
 output * bg #B19CD9 solid_color
 
 exec wl-paste --watch cliphist store
 
-### Input configuration
 input "type:touchpad" {
     tap disabled
     natural_scroll enabled
@@ -30,7 +35,6 @@ input "type:touchpad" {
 }
 
 input "type:pointer" {
-    natural_scroll enabled
     accel_profile flat
 }
 
