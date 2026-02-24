@@ -8,13 +8,12 @@ return {
   version = false, -- Never set this value to "*"! Never!
   opts = {
     instructions_file = "avante.md",
-    provider = "copilot",
+    provider = "openai",
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     "nvim-telescope/telescope.nvim",
-    "zbirenbaum/copilot.lua",
     {
       "MeanderingProgrammer/render-markdown.nvim",
       opts = {
