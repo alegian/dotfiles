@@ -1,5 +1,5 @@
 * {
-    font-family: 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
+    font-family: alegian, monospace;
     font-size: 16px;
 }
 
@@ -9,6 +9,7 @@ window#waybar {
 
 window#waybar > box {
     background-color: #0a0c10;
+    padding: 4px;
     color: #f0f3f6;
     border-radius: 8px;
 }
