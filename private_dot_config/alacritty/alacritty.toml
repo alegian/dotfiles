@@ -5,19 +5,19 @@ padding = { x = 8, y = 8 }
 size = 16.0
 
 [font.normal]
-family = "alegian-font-family"
+family = "alegian"
 style = "Regular"
 
 [font.bold]
-family = "alegian-font-family"
+family = "alegian"
 style = "Bold"
 
 [font.italic]
-family = "alegian-font-family"
+family = "alegian"
 style = "Italic"
 
 [font.bold_italic]
-family = "alegian-font-family"
+family = "alegian"
 style = "Bold Italic"
 
 [colors.primary]
