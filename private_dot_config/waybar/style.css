@@ -50,19 +50,23 @@ button:hover {
     box-shadow: inset 0 -3px #ffffff;
 }
 
-#workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: #ffffff;
-    border-radius: 8px;
+#workspaces button + button {
+    margin-left: 4px;
 }
 
-#workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+#workspaces button {
+    padding: 0 4px;
+    background-color: #B19CD9;
+    color: #0A0C10;
+    border-radius: 8px;
+    transition: all 0.2s ease;
 }
 
 #workspaces button.focused {
-    background-color: #64727D;
+    padding: 0 24px;
+    font-weight: 700;
+    background-color: transparent;
+    color: white;
 }
 
 #workspaces button.urgent {
