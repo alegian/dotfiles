@@ -26,8 +26,6 @@ unset rc
 
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
-export GITHUB_DESKTOP_DISABLE_HARDWARE_ACCELERATION=1
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
