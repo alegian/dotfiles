@@ -15,9 +15,7 @@ return {
         -- LSPs
         "lua-language-server",
         "typescript-language-server",
-        "kotlin-lsp",
         "tailwindcss-language-server",
-        "java-language-server",
         "gradle-language-server",
         "json-lsp",
         "html-lsp",
