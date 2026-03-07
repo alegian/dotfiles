@@ -5,6 +5,23 @@ return {
   end,
   tag = "0.1.8",
   dependencies = { "nvim-lua/plenary.nvim" },
+  opts = {
+    pickers = {
+      buffers = {
+        sort_lastused = true,
+        mappings = {
+          n = {
+            ["dd"] = "delete_buffer",
+          },
+        },
+      },
+      live_grep = {
+        additional_args = function(opts)
+          return { "--glob", "!*lock.json" }
+        end,
+      },
+    },
+  },
   keys = function()
     local builtin = require("telescope.builtin")
     vim.keymap.set("n", "<leader>ff", builtin.find_files)
