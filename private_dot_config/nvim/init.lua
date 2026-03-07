@@ -109,11 +109,6 @@ vim.notify = function(msg, level, opts)
   old_notify(msg, level, opts)
 end
 
--- file reload on external change
-vim.o.autoread = true
-vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
-  command = "if mode() != 'c' | checktime | endif",
-  pattern = "*",
-})
+require("config.file_reload")
 
 require("config.lazy")
