@@ -21,6 +21,7 @@ return {
         "html-lsp",
         "prisma-language-server",
         "haskell-language-server",
+        "markdown-oxide",
         -- Formatters
         "stylua",
         "prettierd",
