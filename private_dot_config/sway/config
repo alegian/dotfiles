@@ -26,6 +26,7 @@ exec_always "swaymsg -t get_outputs | grep -q '$external' && swaymsg output $lap
 output * bg #B19CD9 solid_color
 
 exec wl-paste --watch cliphist store
+exec wl-clip-persist --clipboard regular
 
 input "type:touchpad" {
     tap disabled
@@ -51,8 +52,6 @@ input "type:keyboard" {
     bindsym $mod+Shift+c reload
 
     bindsym control+mod1+delete exec wlogout
-    bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy && notify-send "Screenshot" "Screenshot copied to clipboard"
-    bindsym $mod+Shift+p exec grim -g "$(slurp -p -b 00000000)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy && notify-send "Color Picker" "Color copied to clipboard"
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
@@ -116,17 +115,6 @@ input "type:keyboard" {
 #
 # Layout stuff:
 #
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
-
-    # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
-
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
 
@@ -150,6 +138,17 @@ input "type:keyboard" {
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+
+mode "tools" {
+    bindsym s exec grim -g "$(slurp)" - | wl-copy && notify-send "Screenshot" "Screenshot copied to clipboard"
+    bindsym p exec grim -g "$(slurp -p -b 00000000)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy && notify-send "Color Picker" "Color copied to clipboard"
+    bindsym e exec rofimoji
+
+    # Return to default mode
+    bindsym Escape mode "default"
+}
+bindsym $mod+s mode "tools"
+
 #
 # Resizing containers:
 #
@@ -170,7 +169,6 @@ mode "resize" {
     bindsym Right resize grow width 10px
 
     # Return to default mode
-    bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"

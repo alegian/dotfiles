@@ -5,7 +5,7 @@ mkdir -p "$(dirname "$DBEAVER_PATH")"
 cp ~/.config/dbeaver/data-sources.json $DBEAVER_PATH
 
 if [ ! -x "$HOME/.bun/bin/bun" ]; then
-  curl -fsSL https://bun.sh/install | bash
+  curl -fsSL https://bun.sh/install | sed '/# bun/i break' | bash
 fi
 
 if [ ! -s "$HOME/.nvm/nvm.sh" ]; then
