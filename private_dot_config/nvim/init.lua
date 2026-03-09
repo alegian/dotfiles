@@ -29,6 +29,7 @@ vim.opt.cursorline = true
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.expand("~/.vim/undodir")
 vim.opt.exrc = true
+vim.o.autoread = true
 
 vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { silent = true })
 vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { silent = true })
@@ -108,7 +109,5 @@ vim.notify = function(msg, level, opts)
   end
   old_notify(msg, level, opts)
 end
-
-require("config.file_reload")
 
 require("config.lazy")
