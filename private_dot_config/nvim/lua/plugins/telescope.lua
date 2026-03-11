@@ -17,7 +17,7 @@ return {
       },
       live_grep = {
         additional_args = function(opts)
-          return { "--glob", "!*lock.json" }
+          return { "--glob", "!*lock.json", "--glob", "!*.lock" }
         end,
       },
     },

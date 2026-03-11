@@ -101,6 +101,15 @@ vim.diagnostic.config({
   },
 })
 
+vim.keymap.set("n", "<leader>ai", function()
+  local file_path = vim.fn.expand("%:p")
+
+  if file_path ~= "" then
+    vim.fn.jobstart({ "swaymsg", "workspace", "6" }, { detach = true })
+    vim.fn.jobstart({ "cursor", file_path }, { detach = true })
+  end
+end, { desc = "Open current file in Cursor and switch to Workspace 6" })
+
 -- hack to make ts_ls not cry
 local old_notify = vim.notify
 vim.notify = function(msg, level, opts)
