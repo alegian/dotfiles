@@ -47,3 +47,5 @@ alias day='sudo ddcutil setvcp 10 100'
 alias night='sudo ddcutil setvcp 10 50'
 
 alias save-flatpaks='flatpak list --app --columns=application > ~/.config/flatpaks.txt'
+
+alias review='opencode < ~/.config/opencode/review_prompt.txt'

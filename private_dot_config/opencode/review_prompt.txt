@@ -1,0 +1,1 @@
+Review the current uncommitted changes using `git diff`. Focus on correctness, edge cases, and potential issues. Assume type checks already pass.
