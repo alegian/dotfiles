@@ -18,7 +18,8 @@ vim.keymap.set("n", "<leader>ai", function()
   end
 
   if file_path and file_path ~= "" then
-    local cmd = string.format("cursor -g %s:%d:%d", file_path, line, col)
+    local root = vim.fn.getcwd()
+    local cmd = string.format("cursor %s -g %s:%d:%d", root, file_path, line, col)
 
     vim.fn.jobstart({ "swaymsg", "workspace", "6" }, { detach = true })
     vim.fn.jobstart(cmd, { detach = true })
@@ -31,28 +32,21 @@ vim.api.nvim_create_user_command("CursorQFL", function()
     return
   end
 
-  local args = {}
+  local files = {}
 
   for _, entry in ipairs(qf_list) do
     if entry.bufnr and entry.bufnr > 0 then
       local file_path = vim.api.nvim_buf_get_name(entry.bufnr)
-      local line = entry.lnum or 1
-      local col = entry.col or 1
-
       if file_path ~= "" then
-        table.insert(args, string.format("%s:%d:%d", file_path, line, col))
+        files[file_path] = true
       end
     end
   end
 
-  if #args == 0 then
-    return
-  end
-
-  local cmd = { "cursor" }
-  for _, loc in ipairs(args) do
-    table.insert(cmd, "-g")
-    table.insert(cmd, loc)
+  local root = vim.fn.getcwd()
+  local cmd = { "cursor", root }
+  for file, _ in pairs(files) do
+    table.insert(cmd, file)
   end
 
   vim.fn.jobstart({ "swaymsg", "workspace", "6" }, { detach = true })
