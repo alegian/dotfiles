@@ -1,5 +1,5 @@
 return {
-  "dmmulroy/tsc.nvim",
+  "nickaris1/tsc.nvim",
   cond = function()
     return not vim.g.vscode
   end,
