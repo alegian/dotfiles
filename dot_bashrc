@@ -26,6 +26,8 @@ unset rc
 
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
+export EDITOR=nvim
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
@@ -48,4 +50,4 @@ alias night='sudo ddcutil setvcp 10 50'
 
 alias save-flatpaks='flatpak list --app --columns=application > ~/.config/flatpaks.txt'
 
-alias review='opencode < ~/.config/opencode/review_prompt.txt'
+alias review='opencode run --command review'
