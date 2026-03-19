@@ -22,7 +22,7 @@ return {
       ["<bs>"] = { "actions.parent", mode = "n" },
     },
     view_options = {
-      show_hidden = false,
+      show_hidden = true,
     },
     git = {
       mv = function(src_path, dest_path)
