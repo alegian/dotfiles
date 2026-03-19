@@ -27,11 +27,33 @@ local function filename()
   return vim.fn.expand("%:t:r")
 end
 
+local function textSnippet()
+  return fmt("<T t='{}' />", { i(1) })
+end
+
 ls.add_snippets("typescriptreact", {
   -- i18n text
-  s("txt", fmt("<T t='{}' />", { i(0) })),
-  -- uicon
-  s("ico", fmt("<UIcon className='size-{}' />", { i(0) })),
-  -- uimage
-  s("img", fmt("<UImage fill src={{{}}} />", { i(0) })),
+  s("txt", textSnippet()),
+  -- icon
+  s("ico", fmt("<UIcon className='size-{}' />", { i(1) })),
+  -- image
+  s("img", fmt("<UImage fill src={{{}}} />", { i(1) })),
+  -- button
+  s(
+    "btn",
+    fmt(
+      [[
+<StyledButton size='{}' variant='{}'>
+  {}
+</StyledButton>
+]],
+      {
+        i(1),
+        i(2),
+        d(3, function(_, snip)
+          return sn(nil, textSnippet())
+        end),
+      }
+    )
+  ),
 })

@@ -23,8 +23,8 @@ local conds_expand = require("luasnip.extras.conditions.expand")
 local function copy(args)
   return args[1]
 end
-local function filename()
-  return vim.fn.expand("%:t:r")
+local function filename(_, snip)
+  return snip.env.TM_FILENAME_BASE
 end
 
 ls.add_snippets("typescriptreact", {
@@ -39,7 +39,7 @@ export default function <>() {
 ]],
       {
         f(filename),
-        i(0, "null"),
+        i(1, "null"),
       }
     )
   ),
