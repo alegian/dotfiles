@@ -18,7 +18,7 @@ return {
   opts = {
     watch_for_changes = false,
     keymaps = {
-      ["o"] = { "actions.open_external", mode = "n" },
+      ["<leader>o"] = { "actions.open_external", mode = "n" },
       ["<bs>"] = { "actions.parent", mode = "n" },
     },
     view_options = {
