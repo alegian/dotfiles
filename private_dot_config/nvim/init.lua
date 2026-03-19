@@ -44,12 +44,8 @@ vim.keymap.set("n", "n", "nzzzv", { silent = true })
 vim.keymap.set("n", "N", "Nzzzv", { silent = true })
 vim.keymap.set("v", "<", "<gv", { silent = true })
 vim.keymap.set("v", ">", ">gv", { silent = true })
-vim.keymap.set("i", "<Tab>", "<C-y>", { silent = true })
 vim.keymap.set("n", "g]", vim.diagnostic.goto_next, { silent = true })
 vim.keymap.set("n", "g[", vim.diagnostic.goto_prev, { silent = true })
-vim.keymap.set("i", "<C-Space>", function()
-  vim.lsp.completion.get()
-end, { silent = true })
 vim.keymap.set("n", "H", function()
   local _, winid = vim.diagnostic.open_float()
   if winid == nil then
@@ -62,27 +58,8 @@ for i = 1, 4 do
   vim.keymap.set("n", lhs, rhs)
 end
 
--- Close pane 3, then go to the last used pane
-vim.keymap.set("n", "<leader>x", function()
-  local win3 = vim.fn.win_gotoid(vim.fn.win_getid(3))
-  if win3 ~= 0 then
-    vim.cmd("3wincmd q")
-  else
-    vim.notify("Window 3 does not exist", vim.log.levels.WARN)
-    return
-  end
-
-  vim.cmd("wincmd p")
-end, { silent = true })
-
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(ev)
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-    end
-  end,
-})
+-- close current pane
+vim.keymap.set("n", "<leader>x", "<cmd>close<CR>")
 
 vim.diagnostic.config({
   signs = {
