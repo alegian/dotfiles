@@ -202,7 +202,7 @@ include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "
 
 assign [app_id="brave-browser"] workspace 2
 assign [class="obsidian"] workspace 3
-assign [app_id="Github Desktop"] workspace 4
+assign [app_id="GitHub Desktop"] workspace 4
 assign [class="discord"] workspace 5
 
 exec gtk-launch Alacritty
