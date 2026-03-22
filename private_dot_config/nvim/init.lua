@@ -87,6 +87,7 @@ vim.notify = function(msg, level, opts)
   old_notify(msg, level, opts)
 end
 
+require("config.autopair")
 require("config.cursor")
 
 require("config.lazy")
