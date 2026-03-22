@@ -47,6 +47,7 @@ input "type:keyboard" {
 ### Key bindings
     bindsym $mod+Return exec $term
     bindsym $mod+Shift+q kill
+    bindsym $mod+Shift+Delete [workspace=.*] kill
     bindsym $mod+d exec $menu
     bindsym $mod+c exec $clipboard_menu
     bindsym $mod+Shift+c reload
