@@ -199,3 +199,13 @@ default_border pixel 2
 # the trick, it's all in the `wordexp(3)`.
 #
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+
+assign [app_id="brave-browser"] workspace 2
+assign [class="obsidian"] workspace 3
+assign [app_id="Github Desktop"] workspace 4
+assign [class="discord"] workspace 5
+
+exec gtk-launch Alacritty
+exec gtk-launch com.brave.Browser.desktop
+exec gtk-launch md.obsidian.Obsidian.desktop
+exec gtk-launch com.discordapp.Discord.desktop
