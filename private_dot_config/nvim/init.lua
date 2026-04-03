@@ -57,9 +57,23 @@ for i = 1, 4 do
   local rhs = i .. "<c-w>w"
   vim.keymap.set("n", lhs, rhs)
 end
+vim.keymap.set("i", "<Tab>", function()
+  if vim.fn.pumvisible() == 1 then
+    return "<C-y>"
+  else
+    return "<Tab>"
+  end
+end, { expr = true, noremap = true, silent = true })
 
--- close current pane
-vim.keymap.set("n", "<leader>x", "<cmd>close<CR>")
+-- close the last window
+vim.keymap.set("n", "<leader>x", function()
+  local wins = vim.api.nvim_list_wins()
+  local last_win = wins[#wins]
+
+  if last_win and vim.api.nvim_win_is_valid(last_win) then
+    vim.api.nvim_win_close(last_win, false)
+  end
+end, { noremap = true, silent = true })
 
 vim.diagnostic.config({
   signs = {
