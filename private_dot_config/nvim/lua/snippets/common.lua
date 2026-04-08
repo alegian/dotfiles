@@ -30,7 +30,7 @@ end
 ls.add_snippets("typescriptreact", {
   -- react component with file name
   s(
-    "rc",
+    "comp",
     fmta(
       [[
 export default function <>() {
@@ -43,4 +43,17 @@ export default function <>() {
       }
     )
   ),
+  -- react state
+  s("state", {
+    t("const ["),
+    i(1, "state"),
+    t(", "),
+    f(function(args)
+      local name = args[1][1]
+      return "set" .. name:gsub("^%l", string.upper)
+    end, { 1 }),
+    t("] = useState("),
+    i(2),
+    t(");"),
+  }),
 })
