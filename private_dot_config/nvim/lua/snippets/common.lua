@@ -38,8 +38,10 @@ export default function <>() {
 }
 ]],
       {
-        f(filename),
-        i(1, "null"),
+        d(1, function(args, snip)
+          return sn(nil, i(1, filename(args, snip)))
+        end),
+        i(2, "null"),
       }
     )
   ),

@@ -205,6 +205,7 @@ assign [app_id="brave-browser"] workspace 2
 assign [class="obsidian"] workspace 3
 assign [app_id="GitHub Desktop"] workspace 4
 assign [class="discord"] workspace 5
+assign [app_id="cursor"] workspace 6
 
 exec gtk-launch Alacritty
 exec gtk-launch com.brave.Browser.desktop
