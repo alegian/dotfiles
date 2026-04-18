@@ -25,7 +25,7 @@ return {
         -- Formatters
         "stylua",
         "prettierd",
-        "ktfmt",
+        "nginx-config-formatter",
         -- Linters
         "eslint_d",
         "ktlint",

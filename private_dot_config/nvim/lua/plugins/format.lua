@@ -18,7 +18,6 @@ return {
   opts = {
     formatters_by_ft = {
       lua = { "stylua" },
-      kotlin = { "ktfmt" },
       json = { "prettierd" },
       typescript = { "prettierd" },
       javascript = { "prettierd" },
@@ -26,6 +25,7 @@ return {
       javascriptreact = { "prettierd" },
       html = { "prettierd" },
       markdown = { "prettierd" },
+      nginx = { "nginxfmt" },
     },
     default_format_opts = {
       lsp_format = "fallback",
