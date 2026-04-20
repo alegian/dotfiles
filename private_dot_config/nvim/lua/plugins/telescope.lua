@@ -7,6 +7,9 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {
     pickers = {
+      find_files = {
+        hidden = true,
+      },
       buffers = {
         sort_lastused = true,
         mappings = {
@@ -17,7 +20,7 @@ return {
       },
       live_grep = {
         additional_args = function(opts)
-          return { "--glob", "!*lock.json", "--glob", "!*.lock" }
+          return { "--hidden", "--glob", "!*lock.json", "--glob", "!*.lock" }
         end,
       },
     },
