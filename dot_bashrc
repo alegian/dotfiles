@@ -51,3 +51,14 @@ alias night='sudo ddcutil setvcp 10 50'
 alias save-flatpaks='flatpak list --app --columns=application > ~/.config/flatpaks.txt'
 
 alias review='opencode run --command review'
+
+launch_apps() {
+  for app in \
+    Alacritty \
+    com.brave.Browser.desktop \
+    md.obsidian.Obsidian.desktop \
+    com.discordapp.Discord.desktop
+  do
+    gtk-launch "$app" &
+  done
+}

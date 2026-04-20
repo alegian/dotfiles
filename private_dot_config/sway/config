@@ -49,6 +49,7 @@ input "type:keyboard" {
     bindsym $mod+Shift+q kill
     bindsym $mod+Shift+Delete [workspace=.*] kill
     bindsym $mod+d exec $menu
+    bindsym $mod+a exec bash -ic 'launch_apps'
     bindsym $mod+c exec $clipboard_menu
     bindsym $mod+Shift+c reload
 
@@ -124,9 +125,6 @@ input "type:keyboard" {
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
-
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
 #
 # Scratchpad:
 #
@@ -207,7 +205,3 @@ assign [app_id="GitHub Desktop"] workspace 4
 assign [class="discord"] workspace 5
 assign [app_id="cursor"] workspace 6
 
-exec gtk-launch Alacritty
-exec gtk-launch com.brave.Browser.desktop
-exec gtk-launch md.obsidian.Obsidian.desktop
-exec gtk-launch com.discordapp.Discord.desktop
