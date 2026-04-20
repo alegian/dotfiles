@@ -37,6 +37,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     opts = {
+      enable = false,
       multiline_threshold = 10,
       trim_scope = "inner",
     },
