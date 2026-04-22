@@ -4,7 +4,7 @@
     "review": {
       "template": "Review the current uncommitted changes using `git diff`. Focus on correctness, edge cases, and potential issues. Assume type checks already pass.",
       "description": "Reviews uncommited code for best practices and potential issues",
-      "model": "openai/gpt-5.2-codex",
+      "model": "openai/gpt-5.3-codex",
     },
   },
 }
