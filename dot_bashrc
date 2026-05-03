@@ -62,3 +62,9 @@ launch_apps() {
     gtk-launch "$app" &
   done
 }
+
+ipv6_off() {
+  sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+  echo "IPv6 disabled for a minute..."
+  (sleep 60 && sudo sysctl -w net.ipv6.conf.all.disable_ipv6=0 && echo "IPv6 re-enabled") &
+}
