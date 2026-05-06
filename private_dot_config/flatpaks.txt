@@ -1,7 +1,6 @@
 com.brave.Browser
 com.discordapp.Discord
 com.github.ahrm.sioyek
-com.jetbrains.IntelliJ-IDEA-Community
 com.obsproject.Studio
 com.protonvpn.www
 com.spotify.Client

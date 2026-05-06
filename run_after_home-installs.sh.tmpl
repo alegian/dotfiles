@@ -19,3 +19,38 @@ fi
 npm install --global yarn
 
 yarn global add opencode-ai
+
+set -euo pipefail
+
+URL="https://download.jetbrains.com/idea/idea-2026.1.1.tar.gz"
+
+INSTALL_DIR="$HOME/.local/opt/idea"
+BIN_DIR="$HOME/.local/bin"
+BIN_LINK="$BIN_DIR/idea"
+
+if [ -d "$INSTALL_DIR" ]; then
+  exit 0
+fi
+
+TMP_DIR="$(mktemp -d)"
+
+cleanup() {
+  rm -rf "$TMP_DIR"
+}
+trap cleanup EXIT
+
+mkdir -p "$HOME/.local/opt"
+mkdir -p "$BIN_DIR"
+
+echo "Downloading IntelliJ IDEA..."
+curl -L "$URL" -o "$TMP_DIR/idea.tar.gz"
+
+tar -xzf "$TMP_DIR/idea.tar.gz" -C "$TMP_DIR"
+
+EXTRACTED_DIR="$(find "$TMP_DIR" -maxdepth 1 -type d -name 'idea-*' | head -n 1)"
+
+mv "$EXTRACTED_DIR" "$INSTALL_DIR"
+
+ln -sf "$INSTALL_DIR/bin/idea" "$BIN_LINK"
+
+echo "Intellij IDEA installed"
