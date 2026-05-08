@@ -75,6 +75,9 @@ vim.keymap.set("n", "<leader>x", function()
   end
 end, { noremap = true, silent = true })
 
+-- convert import to absolute
+vim.keymap.set("n", "<leader>ri", [[:s/from\s\+['"]\zs\([\./]\+\)\ze/@\/components\//<CR>]])
+
 vim.diagnostic.config({
   signs = {
     text = {
