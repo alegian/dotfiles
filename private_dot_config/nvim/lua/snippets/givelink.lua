@@ -27,11 +27,22 @@ local function filename()
   return vim.fn.expand("%:t:r")
 end
 
+local function filenameLowerFirst()
+  local name = filename()
+  return name:lower():sub(1, 1) .. name:sub(2)
+end
+
 local function textSnippet()
   return fmt("<T t='{}' />", { i(1) })
 end
 
 ls.add_snippets("typescriptreact", {
+  s(
+    "unt",
+    fmt("const T = useNamespaceT('{}')", {
+      f(filenameLowerFirst),
+    })
+  ),
   -- i18n text
   s("txt", textSnippet()),
   -- icon
