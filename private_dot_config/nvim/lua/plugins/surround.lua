@@ -5,5 +5,9 @@ return {
   },
   version = "^3.0.0",
   event = "VeryLazy",
-  opts = {},
+  opts = {
+    keymaps = {
+      visual = "s",
+    },
+  },
 }

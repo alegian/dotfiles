@@ -29,6 +29,25 @@ return {
         ["<Up>"] = { "select_prev", "fallback" },
         ["<Down>"] = { "select_next", "fallback" },
       },
+      fuzzy = {
+        sorts = {
+          function(a, b)
+            local function is_low_priority(item)
+              return item.client_name == "tailwindcss"
+            end
+
+            local a_low = is_low_priority(a)
+            local b_low = is_low_priority(b)
+
+            if a_low ~= b_low then
+              return not a_low
+            end
+          end,
+
+          "score",
+          "sort_text",
+        },
+      },
     },
     opts_extend = { "sources.default" },
   },
