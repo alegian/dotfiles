@@ -23,7 +23,7 @@ return {
       },
       live_grep = {
         additional_args = function(opts)
-          return { "--hidden", "--glob", "!*lock.json", "--glob", "!*.lock" }
+          return { "--hidden", "--glob", "!*lock.json", "--glob", "!*.lock", "--glob", "!.git", "--glob", "!.yarn" }
         end,
       },
     },
