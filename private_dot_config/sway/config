@@ -24,6 +24,7 @@ set $external LG Electronics
 exec_always "swaymsg -t get_outputs | grep -q '$external' && swaymsg output $laptop disable || swaymsg output $laptop enable"
 
 output * bg #B19CD9 solid_color
+output * mode 1920x1080@119.997Hz
 
 exec wl-paste --watch cliphist store
 exec wl-clip-persist --clipboard regular
