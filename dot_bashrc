@@ -36,6 +36,10 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$PATH"
 
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 [ -f "/home/alegian/.ghcup/env" ] && . "/home/alegian/.ghcup/env" # ghcup-env
 
 alias nvimc='cd ~/.config/nvim && nvim .'
@@ -63,14 +67,7 @@ launch_apps() {
   done
 }
 
-ipv6_off() {
-  sudo sysctl -q -w net.ipv6.conf.all.disable_ipv6=1
-  echo "IPv6 disabled for one minute"
-
-  sudo systemd-run \
-    --quiet \
-    --collect \
-    --on-active=60 \
-    --unit=reenable-ipv6 \
-    /usr/sbin/sysctl -q -w net.ipv6.conf.all.disable_ipv6=0
+java17() {
+  export JAVA_HOME=/var/home/alegian/.gradle/jdks/eclipse_adoptium-17-amd64-linux/jdk-17.0.19+10
+  export PATH="$JAVA_HOME/bin:$PATH"
 }
