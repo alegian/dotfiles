@@ -73,6 +73,6 @@ java17() {
 }
 
 java21() {
-  export JAVA_HOME=/var/home/alegian/.gradle/jdks/eclipse_adoptium-21-amd64-linux/jdk-21.0.11
+  export JAVA_HOME=/var/home/alegian/.jdks/temurin-21.0.11
   export PATH="$JAVA_HOME/bin:$PATH"
 }
