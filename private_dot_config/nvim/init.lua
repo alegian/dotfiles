@@ -106,5 +106,6 @@ end
 
 require("config.autopair")
 require("config.cursor")
+require("config.lsp")
 
 require("config.lazy")
