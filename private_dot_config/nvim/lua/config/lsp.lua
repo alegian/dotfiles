@@ -44,7 +44,7 @@ vim.lsp.config("jdtls", {
 })
 
 vim.api.nvim_create_autocmd("BufReadCmd", {
-  pattern = "jdt://*",
+  pattern = { "jdt://*", "jar://*" },
   callback = function(ev)
     local clients = vim.lsp.get_clients({ name = "jdtls" })
     if #clients == 0 then
