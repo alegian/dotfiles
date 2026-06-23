@@ -26,6 +26,8 @@ unset rc
 
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
+eval "$(fzf --bash)"
+
 export EDITOR=nvim
 
 export NVM_DIR="$HOME/.nvm"
