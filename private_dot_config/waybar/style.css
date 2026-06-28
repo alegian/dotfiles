@@ -11,7 +11,6 @@ window#waybar > box {
     background-color: #0a0c10;
     padding: 4px;
     color: #f0f3f6;
-    border-radius: 8px;
 }
 
 window#waybar.hidden {

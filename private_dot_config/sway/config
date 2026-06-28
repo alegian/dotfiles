@@ -174,7 +174,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 gaps inner 4
-corner_radius 8
+gaps outer -4
 default_border pixel 2
 
 # Include configs from 3 locations:
