@@ -9,7 +9,6 @@ window#waybar {
 
 window#waybar > box {
     background-color: #0a0c10;
-    padding: 4px;
     color: #f0f3f6;
 }
 
@@ -47,27 +46,22 @@ button:hover {
     background: inherit;
 }
 
-#workspaces button + button {
-    margin-left: 4px;
-}
-
 #workspaces button {
-    padding: 0 4px;
-    background-color: #B19CD9;
-    color: #0A0C10;
-    border-radius: 8px;
+    padding: 4px 12px;
+    background-color: transparent;
+    color: #f0f3f6;
     transition: all 0.2s ease;
 }
 
 #workspaces button.focused {
     padding: 0 24px;
-    font-weight: 700;
-    background-color: transparent;
-    color: white;
+    background-color: #B19CD9;
+    color: #0A0C10;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background-color: #f0f3f6;
+    color: #0A0C10;
 }
 
 #mode {
@@ -97,19 +91,8 @@ button:hover {
     color: #ffffff;
 }
 
-#window,
-#workspaces {
+#window {
     margin: 0 4px;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
 }
 
 #custom-media {
@@ -182,7 +165,7 @@ button:hover {
 
 #privacy-item {
     padding: 0 5px;
-    color: white;
+    color: #f0f3f6;
 }
 
 #privacy-item.screenshare {
