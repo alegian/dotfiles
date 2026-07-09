@@ -19,7 +19,7 @@ vim.keymap.set("n", "<leader>ai", function()
 
   if file_path and file_path ~= "" then
     local root = vim.fn.getcwd()
-    local cmd = string.format("cursor %s -g %s:%d:%d", root, file_path, line, col)
+    local cmd = string.format("cursor %s -g %s:%d:%d --classic", root, file_path, line, col)
 
     vim.fn.jobstart({ "swaymsg", "workspace", "6" }, { detach = true })
     vim.fn.jobstart(cmd, { detach = true })
@@ -44,7 +44,7 @@ vim.api.nvim_create_user_command("CursorQFL", function()
   end
 
   local root = vim.fn.getcwd()
-  local cmd = { "cursor", root }
+  local cmd = { "cursor --classic", root }
   for file, _ in pairs(files) do
     table.insert(cmd, file)
   end

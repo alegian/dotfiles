@@ -23,6 +23,7 @@
   ],
   "sway/workspaces": {
     "disable-scroll": true,
+    "disable-click": true,
     "all-outputs": true,
     "warp-on-scroll": false,
     "format": "{name}{icon}",

@@ -43,6 +43,14 @@ ls.add_snippets("typescriptreact", {
       f(filenameLowerFirst),
     })
   ),
+  s("setstore", t("const [, setStore] = useDataStore(() => undefined, false);")),
+  s("store", {
+    t("const [$"),
+    i(1, "input"),
+    t("] = useDataStore(s => s."),
+    rep(1),
+    t(");"),
+  }),
   -- i18n text
   s("txt", textSnippet()),
   -- icon
