@@ -4,7 +4,7 @@
     "review": {
       "template": "Review the current uncommitted changes using `git diff`. If the diff is empty, read the latest commit. Focus on logical correctness, edge cases, and potential issues. Assume type checks already pass. You don't need to lint.'",
       "description": "Reviews uncommited code for best practices and potential issues",
-      "model": "openai/gpt-5.5",
+      "model": "openai/gpt-5.6-terra",
     },
   },
   "experimental": {
