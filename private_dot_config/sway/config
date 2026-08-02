@@ -201,7 +201,7 @@ default_border pixel 2
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
 
 assign [app_id="brave-browser"] workspace 2
-assign [class="obsidian"] workspace 3
+assign [app_id="md.Obsidian"] workspace 3
 assign [app_id="GitHub Desktop"] workspace 4
 assign [app_id="discord"] workspace 5
 assign [app_id="cursor"] workspace 6
