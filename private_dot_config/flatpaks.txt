@@ -9,7 +9,6 @@ com.valvesoftware.Steam
 com.visualstudio.code
 io.dbeaver.DBeaverCommunity
 io.github.shiftey.Desktop
-md.obsidian.Obsidian
 net.blockbench.Blockbench
 org.blender.Blender
 org.fedoraproject.MediaWriter

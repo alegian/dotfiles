@@ -59,10 +59,11 @@ alias save-flatpaks='flatpak list --app --columns=application > ~/.config/flatpa
 alias review='opencode run --command review'
 
 launch_apps() {
+  alacritty --class alegian.main-terminal &
+  alacritty --class alegian.notes &
+
   for app in \
-    Alacritty \
     com.brave.Browser.desktop \
-    md.obsidian.Obsidian.desktop \
     com.discordapp.Discord.desktop
   do
     gtk-launch "$app" &
