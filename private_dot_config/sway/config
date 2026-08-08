@@ -200,7 +200,7 @@ default_border pixel 2
 #
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
 
-assign [app_id="alegian.main-terminal"] workspace 3
+assign [app_id="alegian.main-terminal"] workspace 1
 assign [app_id="brave-browser"] workspace 2
 assign [app_id="alegian.notes"] workspace 3
 assign [app_id="GitHub Desktop"] workspace 4
