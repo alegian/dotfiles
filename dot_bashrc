@@ -60,7 +60,7 @@ alias review='opencode run --command review'
 
 launch_apps() {
   alacritty --class alegian.main-terminal &
-  alacritty --class alegian.notes &
+  alacritty --working-directory "/home/alegian/Insync/alegiannx@gmail.com/Google Drive/notes" --class alegian.notes &
 
   for app in \
     com.brave.Browser.desktop \

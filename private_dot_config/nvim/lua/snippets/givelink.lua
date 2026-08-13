@@ -45,7 +45,7 @@ ls.add_snippets("typescriptreact", {
   ),
   s("setstore", t("const [, setStore] = useDataStore(() => undefined, false);")),
   s("store", {
-    t("const [$"),
+    t("const ["),
     i(1, "input"),
     t("] = useDataStore(s => s."),
     rep(1),
