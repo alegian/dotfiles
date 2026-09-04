@@ -1,3 +1,4 @@
+app.polychromatic.controller
 com.brave.Browser
 com.discordapp.Discord
 com.github.ahrm.sioyek
