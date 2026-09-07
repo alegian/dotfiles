@@ -18,3 +18,12 @@ vim.keymap.set("i", "[", function()
   end
   return "[" .. "]" .. "<Left>"
 end, { expr = true, noremap = true })
+
+vim.api.nvim_create_user_command("Bullet", function(opts)
+  local start_line = opts.line1 - 1
+  local lines = vim.api.nvim_buf_get_lines(0, start_line, opts.line2, false)
+  for i, line in ipairs(lines) do
+    lines[i] = line:gsub("%- %[[ x]%]", "-")
+  end
+  vim.api.nvim_buf_set_lines(0, start_line, opts.line2, false, lines)
+end, { range = true, desc = "Convert checkboxes to bullets" })
