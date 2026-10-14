@@ -81,3 +81,10 @@ java21() {
   export JAVA_HOME=/var/home/alegian/.jdks/temurin-21.0.11
   export PATH="$JAVA_HOME/bin:$PATH"
 }
+
+opencode() {
+  (
+    source "$HOME/.config/opencode/secrets.sh"
+    command opencode "$@"
+  )
+}
