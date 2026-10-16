@@ -18,8 +18,6 @@ return {
         "tailwindcss-language-server",
         "gradle-language-server",
         "json-lsp",
-        "kotlin-lsp",
-        "jdtls",
         "html-lsp",
         "prisma-language-server",
         "haskell-language-server",
