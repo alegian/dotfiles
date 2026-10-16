@@ -16,6 +16,10 @@ if [ ! -x "$HOME/.ghcup/bin/ghcup" ]; then
   curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 fi
 
+if [ ! -d "$HOME/.local/share/vocalinux-install" ]; then
+    curl -fsSL https://raw.githubusercontent.com/VocaHQ/vocalinux/main/install.sh | bash -s -- --auto
+fi
+
 npm install --global yarn
 
 yarn global add opencode-ai
