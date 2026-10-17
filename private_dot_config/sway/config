@@ -53,6 +53,7 @@ input "type:keyboard" {
     bindsym $mod+a exec bash -ic 'launch_apps'
     bindsym $mod+c exec $clipboard_menu
     bindsym $mod+Shift+c reload
+    bindsym $mod+v exec /home/alegian/.local/bin/vocalinux --toggle
 
     bindsym control+mod1+delete exec wlogout
     # Drag floating windows by holding down $mod and left mouse button.

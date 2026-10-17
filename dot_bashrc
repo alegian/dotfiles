@@ -82,9 +82,3 @@ java21() {
   export PATH="$JAVA_HOME/bin:$PATH"
 }
 
-opencode() {
-  (
-    source "$HOME/.config/opencode/secrets.sh"
-    command opencode "$@"
-  )
-}
