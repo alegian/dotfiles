@@ -82,3 +82,32 @@ java21() {
   export PATH="$JAVA_HOME/bin:$PATH"
 }
 
+update-intellij-server() (
+  set -euo pipefail
+
+  local dest="$HOME/.local/share/intellij-server"
+  local repo="https://raw.githubusercontent.com/JetBrains/intellij-lsp.nvim/main/lua/intellij-lsp/server_bundles.lua"
+
+  local version
+  version=$(curl -fsSL "$repo" | sed -n "s/^M.version = '\([^']*\)'/\1/p")
+  test -n "$version"
+
+  local url="https://download.jetbrains.com/language-server/intellij-server/$version/intellij-server-$version.tar.gz"
+
+  local tmp
+  tmp=$(mktemp -d)
+  trap 'rm -rf "$tmp"' EXIT
+
+  curl -fsSL "$url" -o "$tmp/server.tar.gz"
+  mkdir -p "$tmp/install"
+  tar -xzf "$tmp/server.tar.gz" --strip-components=1 -C "$tmp/install"
+
+  test -f "$tmp/install/bin/intellij-server"
+  chmod +x "$tmp/install/bin/intellij-server"
+
+  mkdir -p "$(dirname "$dest")"
+  rm -rf "$dest"
+  mv "$tmp/install" "$dest"
+
+  echo "Installed intellij-server $version"
+)
