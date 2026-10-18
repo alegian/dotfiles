@@ -107,5 +107,6 @@ end
 
 require("config.autopair")
 require("config.cursor")
+require("config.intellij")
 
 require("config.lazy")
