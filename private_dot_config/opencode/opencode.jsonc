@@ -7,4 +7,11 @@
       "model": "openai/gpt-6.1-sol",
     },
   },
+  "permissions": [
+    {
+      "action": "external_directory",
+      "resource": "*",
+      "effect": "ask"
+    }
+  ]
 }
