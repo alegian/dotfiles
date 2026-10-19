@@ -1,0 +1,19 @@
+{
+  "$schema": "https://opencode.ai/v2/cli.json",
+  "theme": { "name": "github" },
+  "prompt": {
+    "paste": "full"
+  },
+  "plugins": [
+    {
+      "package": "@leohenon/opencode-vim-plugin@beta",
+      "options": {
+        "enabled": true,
+        "indicator": true,
+        "vim_enter_submit": false,
+        "vim_insert_after_submit": true,
+        "vim_system_clipboard_register": true
+      }
+    }
+  ]
+}
