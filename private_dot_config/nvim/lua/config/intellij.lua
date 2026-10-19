@@ -1,9 +1,20 @@
+local server_dir = vim.fn.expand("~/.local/share/intellij-server")
+
+local eula_hash = vim.fn
+  .system({
+    "sha256sum",
+    server_dir .. "/EULA.txt",
+  })
+  :sub(1, 16)
+
 vim.lsp.config("intellij", {
   cmd = {
-    vim.fn.expand("~/.local/share/intellij-server/bin/intellij-server"),
+    server_dir .. "/bin/intellij-server",
     "--stdio",
     "--system-path",
     vim.fn.stdpath("cache") .. "/intellij-standalone",
+    "--eula",
+    eula_hash,
   },
 
   filetypes = { "java", "kotlin" },
