@@ -15,5 +15,8 @@
         "vim_system_clipboard_register": true
       }
     }
-  ]
+  ],
+  "tabs": {
+    "mode": "off"
+  }
 }
