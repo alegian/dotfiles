@@ -1,4 +1,115 @@
 local server_dir = vim.fn.expand("~/.local/share/intellij-server")
+local version_fixes = {}
+
+local function install_intellij_version_fix(client)
+  local ledgers = {}
+  local original_notify = client.notify
+  local original_request = client.request
+
+  local function translate(uri, version)
+    if version == nil or version == vim.NIL then
+      return vim.NIL
+    end
+    if type(version) ~= "number" or version <= 0 then
+      return version
+    end
+
+    local ledger = ledgers[uri]
+    if not ledger then
+      return version
+    end
+
+    if ledger.ticks[version] then
+      return ledger.ticks[version]
+    end
+    if ledger.sent[version] then
+      return version
+    end
+
+    -- Unknown versions must not bypass stale-edit checks.
+    return -1
+  end
+
+  local function fix_edit(edit)
+    if not edit or not edit.documentChanges then
+      return
+    end
+
+    for _, change in ipairs(edit.documentChanges) do
+      local doc = change.textDocument
+      if doc and doc.uri then
+        doc.version = translate(doc.uri, doc.version)
+      end
+    end
+  end
+
+  client.notify = function(self, method, params, ...)
+    local doc = params and params.textDocument
+
+    if doc and doc.uri then
+      local uri = doc.uri
+
+      if method == "textDocument/didOpen" then
+        local version = doc.version or 0
+        ledgers[uri] = {
+          counter = version,
+          ticks = { [version] = version },
+          sent = { [version] = true },
+        }
+      elseif method == "textDocument/didChange" then
+        local ledger = ledgers[uri]
+        if ledger and type(doc.version) == "number" then
+          ledger.counter = ledger.counter + 1
+          ledger.ticks[ledger.counter] = doc.version
+          ledger.sent[doc.version] = true
+        end
+      elseif method == "textDocument/didClose" then
+        ledgers[uri] = nil
+      end
+    end
+
+    return original_notify(self, method, params, ...)
+  end
+
+  local methods = {
+    ["textDocument/rename"] = true,
+    ["workspace/willRenameFiles"] = true,
+    ["textDocument/codeAction"] = true,
+    ["codeAction/resolve"] = true,
+  }
+
+  client.request = function(self, method, params, handler, ...)
+    if not methods[method] then
+      return original_request(self, method, params, handler, ...)
+    end
+
+    local callback = handler or (self.handlers and self.handlers[method]) or vim.lsp.handlers[method]
+
+    if not callback then
+      return original_request(self, method, params, handler, ...)
+    end
+
+    return original_request(self, method, params, function(err, result, ...)
+      if type(result) == "table" then
+        if method == "textDocument/codeAction" then
+          for _, action in ipairs(result) do
+            if type(action) == "table" then
+              fix_edit(action.edit)
+            end
+          end
+        elseif method == "codeAction/resolve" then
+          fix_edit(result.edit)
+        else
+          fix_edit(result)
+        end
+      end
+
+      return callback(err, result, ...)
+    end, ...)
+  end
+
+  return fix_edit
+end
 
 local eula_hash = vim.fn
   .system({
@@ -34,6 +145,26 @@ vim.lsp.config("intellij", {
     lazyIntentions = false,
     runMainCodeLens = false,
   },
+
+  on_init = function(client)
+    version_fixes[client.id] = install_intellij_version_fix(client)
+  end,
+
+  handlers = {
+    ["workspace/applyEdit"] = function(err, params, ctx, config)
+      local fix = version_fixes[ctx.client_id]
+
+      if fix and params then
+        fix(params.edit)
+      end
+
+      return vim.lsp.handlers["workspace/applyEdit"](err, params, ctx, config)
+    end,
+  },
+
+  on_exit = function(_, _, client_id)
+    version_fixes[client_id] = nil
+  end,
 })
 
 vim.lsp.enable("intellij")

@@ -16,8 +16,14 @@ return {
     },
   },
   opts = {
+    formatters = {
+      ktlint = {
+        prepend_args = { "--ignore-autocorrect-failures" },
+      },
+    },
     formatters_by_ft = {
       lua = { "stylua" },
+      kotlin = { "ktlint" },
       json = { "prettierd" },
       typescript = { "prettierd" },
       javascript = { "prettierd" },

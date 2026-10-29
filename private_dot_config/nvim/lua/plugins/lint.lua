@@ -26,6 +26,14 @@ return {
   event = "VimEnter",
   config = function()
     local lint = require("lint")
+    lint.linters.ktlint.args = {
+      "--reporter=json",
+      "--stdin",
+      "--stdin-path",
+      function()
+        return vim.api.nvim_buf_get_name(0)
+      end,
+    }
     lint.linters_by_ft = {
       javascript = { "eslint_d" },
       typescript = { "eslint_d" },
