@@ -45,8 +45,6 @@ vim.keymap.set("n", "n", "nzzzv", { silent = true })
 vim.keymap.set("n", "N", "Nzzzv", { silent = true })
 vim.keymap.set("v", "<", "<gv", { silent = true })
 vim.keymap.set("v", ">", ">gv", { silent = true })
-vim.keymap.set("n", "g]", vim.diagnostic.goto_next, { silent = true })
-vim.keymap.set("n", "g[", vim.diagnostic.goto_prev, { silent = true })
 vim.keymap.set("n", "H", function()
   local _, winid = vim.diagnostic.open_float()
   if winid == nil then
@@ -79,7 +77,26 @@ end, { noremap = true, silent = true })
 -- convert import to absolute
 vim.keymap.set("n", "<leader>ri", [[:s/from\s\+['"]\zs\([\./]\+\)\ze/@\/components\//<CR>]])
 
+local function smart_diagnostic_jump(direction)
+  local errors = vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+
+  local target_severity = #errors > 0 and vim.diagnostic.severity.ERROR or nil
+
+  vim.diagnostic.jump({
+    count = direction,
+    float = true,
+    severity = target_severity,
+  })
+end
+
+vim.keymap.set("n", "g]", function()
+  smart_diagnostic_jump(1)
+end, { silent = true })
+vim.keymap.set("n", "g[", function()
+  smart_diagnostic_jump(-1)
+end, { silent = true })
 vim.diagnostic.config({
+  severity_sort = true,
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "",
@@ -87,12 +104,12 @@ vim.diagnostic.config({
       [vim.diagnostic.severity.INFO] = "",
       [vim.diagnostic.severity.HINT] = "",
     },
-    numhl = {
-      [vim.diagnostic.severity.WARN] = "WarningMsg",
-      [vim.diagnostic.severity.ERROR] = "ErrorMsg",
-      [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
-      [vim.diagnostic.severity.HINT] = "DiagnosticHint",
-    },
+  },
+  numhl = {
+    [vim.diagnostic.severity.WARN] = "WarningMsg",
+    [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+    [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+    [vim.diagnostic.severity.HINT] = "DiagnosticHint",
   },
 })
 
