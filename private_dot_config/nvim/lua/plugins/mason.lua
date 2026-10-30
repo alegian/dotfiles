@@ -22,6 +22,7 @@ return {
         "prisma-language-server",
         "haskell-language-server",
         "markdown-oxide",
+        "tinymist",
         -- Formatters
         "stylua",
         "prettierd",
