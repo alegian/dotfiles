@@ -14,7 +14,7 @@ return {
       ensure_installed = {
         -- LSPs
         "lua-language-server",
-        "typescript-language-server",
+        "tsc",
         "tailwindcss-language-server",
         "gradle-language-server",
         "json-lsp",
