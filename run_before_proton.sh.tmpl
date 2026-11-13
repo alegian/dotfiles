@@ -1,7 +1,5 @@
 #!/bin/sh
 
-xargs flatpak install -y < ~/.local/share/chezmoi/private_dot_config/flatpaks.txt
-
 KEY_PATH="$HOME/.config/age/chezmoi-key.txt"
 
 if [ ! -f "$KEY_PATH" ]; then
