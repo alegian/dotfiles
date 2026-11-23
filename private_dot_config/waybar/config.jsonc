@@ -17,6 +17,7 @@
     "idle_inhibitor",
     "pulseaudio",
     "sway/language",
+    "keyboard-state",
     "battery",
     "clock",
     "tray"
@@ -48,12 +49,12 @@
     }
   },
   "keyboard-state": {
-    "numlock": true,
+    "numlock": false,
     "capslock": true,
-    "format": "{name} {icon}",
+    "format": "{icon}",
     "format-icons": {
-      "locked": "",
-      "unlocked": ""
+      "locked": "󰪛",
+      "unlocked": "-"
     }
   },
   "sway/mode": {
