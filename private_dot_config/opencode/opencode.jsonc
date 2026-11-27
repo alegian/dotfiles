@@ -6,6 +6,14 @@
       "description": "Reviews uncommited code for best practices and potential issues",
       "model": "openai/gpt-6.1-sol",
     },
+    "clean": {
+      "template": "review current diff for clean code. things to look out for: useless comments, effects that can be achieved with action-based event handlers, 1-time-used types that can be inlined, useless exports, duplicated code, guards that are not needed or duplicated, type casts and type assertions, should-be-constants. for bad variable names, you can report them, but i will have to approve them before application. its important the functionality stays exactly the same.",
+      "model": "openai/gpt-6.1-sol",
+    },
+    "uview": {
+      "template": "review current diff. replace divs with UView/Column/Row components where natural, respecting propMap. Only prefer UText for headings h1-h6 or large paragraphs (over 2 lines)",
+      "model": "openai/gpt-6.1-sol",
+    }
   },
   "permissions": [
     {
